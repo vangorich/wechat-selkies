@@ -54,10 +54,10 @@ RUN case "$TARGETPLATFORM" in \
 # Install QQ based on target architecture
 RUN case "$TARGETPLATFORM" in \
     "linux/amd64") \
-        QQ_URL="https://dldir1.qq.com/qqfile/qq/QQNT/18039323/linuxqq_3.2.21-41857_amd64.deb"; \
+        QQ_URL="https://dldir1v6.qq.com/qqfile/qq/QQNT/Linux/QQ_3.2.22_251203_amd64_01.deb"; \
         QQ_ARCH="x86_64" ;; \
     "linux/arm64") \
-        QQ_URL="https://dldir1.qq.com/qqfile/qq/QQNT/18039323/linuxqq_3.2.21-41857_arm64.deb"; \
+        QQ_URL="https://dldir1v6.qq.com/qqfile/qq/QQNT/Linux/QQ_3.2.22_251203_amd64_01.deb"; \
         QQ_ARCH="arm64" ;; \
     *) \
         echo "❌ Unsupported platform: $TARGETPLATFORM" >&2; \
