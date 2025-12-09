@@ -96,13 +96,3 @@ RUN cp /usr/share/icons/hicolor/128x128/apps/wechat.png /usr/share/selkies/www/i
 
 # add local files
 COPY /root /
-
-# 修复 Selkies 地址绑定问题
-RUN sed -i 's/--addr="localhost"/--addr="0.0.0.0"/g' /etc/s6-overlay/s6-rc.d/svc-selkies/run
-
-# 暴露端口
-EXPOSE 8080
-
-# 启动
-ENTRYPOINT ["/init"]
-
