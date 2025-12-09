@@ -52,7 +52,16 @@ RUN case "$TARGETPLATFORM" in \
     echo "✅ WeChat installation completed for $WECHAT_ARCH"
 
 # Install QQ based on target architecture
-RUN case "$TARGETPLATFORM" in \
+RUN apt-get update && \
+    apt-get install -y \
+    libxcb1 libxcb-render0 libxcb-shape0 libxcb-xfixes0 libxcb-xinerama0 \
+    libxcb-xrandr0 libxcb-xkb1 libxkbcommon0 libxkbcommon-x11-0 \
+    libfontconfig1 libfreetype6 libharfbuzz0b libpng16-16 libjpeg62-turbo \
+    libssl3 libdbus-1-3 libglib2.0-0 libsm6 libxext6 libxrender1 \
+    libxrandr2 libxinerama1 libxi6 libxcursor1 libxtst6 libxcomposite1 \
+    libxdamage1 libxfixes3 libxkbfile1 libxss1 libxv1 libxvmc1 \
+    libxxf86dga1 libxxf86vm1 libva1 libvdpau1 && \
+    case "$TARGETPLATFORM" in \
     "linux/amd64") \
         QQ_URL="https://dldir1.qq.com/qqfile/qq/QQNT/18039323/linuxqq_3.2.21-41857_amd64.deb"; \
         QQ_ARCH="x86_64" ;; \
@@ -68,7 +77,6 @@ RUN case "$TARGETPLATFORM" in \
     curl -fsSL -o qq.deb "$QQ_URL" && \
     echo "🔧 Installing QQ..." && \
     dpkg -i qq.deb || true && \
-    apt-get update && \
     apt-get install -f -y && \
     rm -f qq.deb && \
     echo "✅ QQ installation completed for $QQ_ARCH"
