@@ -97,6 +97,18 @@ RUN cp /usr/share/icons/hicolor/128x128/apps/wechat.png /usr/share/selkies/www/i
 # add local files
 COPY /root /
 
-# 在 Dockerfile 末尾添加
+# set app name
+ENV TITLE="WeChat-Selkies"
+ENV TZ="Asia/Shanghai"
+ENV LC_ALL="zh_CN.UTF-8"
+ENV AUTO_START_WECHAT="true"
+ENV AUTO_START_QQ="false"
+
+# update favicon
+RUN cp /usr/share/icons/hicolor/128x128/apps/wechat.png /usr/share/pixmaps/favicon.png
+
+# 暴露端口
 EXPOSE 8082
-CMD ["/init"]
+
+# 启动
+ENTRYPOINT ["/init"]
