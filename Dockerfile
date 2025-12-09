@@ -96,3 +96,7 @@ RUN cp /usr/share/icons/hicolor/128x128/apps/wechat.png /usr/share/selkies/www/i
 
 # add local files
 COPY /root /
+
+# 在 Dockerfile 末尾添加
+EXPOSE 8082
+CMD ["/init"]
