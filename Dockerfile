@@ -91,6 +91,12 @@ ENV LC_ALL="zh_CN.UTF-8"
 ENV AUTO_START_WECHAT="true"
 ENV AUTO_START_QQ="false"
 
+# update favicon
+RUN cp /usr/share/icons/hicolor/128x128/apps/wechat.png /usr/share/selkies/www/icon.png
+
+# add local files
+COPY /root /
+
 # 修复 Selkies 地址绑定问题
 RUN sed -i 's/--addr="localhost"/--addr="0.0.0.0"/g' /etc/s6-overlay/s6-rc.d/svc-selkies/run
 
